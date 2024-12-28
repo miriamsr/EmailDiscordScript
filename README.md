@@ -29,7 +29,7 @@ clasp create --type standalone
 ```bash
 clasp push
 ```
-9. Open your projeck in the browser.
+9. Open your project in the browser.
 ```bash
 clasp open
 ```
