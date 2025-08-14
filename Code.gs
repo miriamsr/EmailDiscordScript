@@ -28,7 +28,7 @@ function checkEmails() {
                         body = body.substring(0, 4050) + "\n\n**email has been truncated due to length**";
                     }
 
-                    const fields = {};
+                    const fields = [];
                     fields.push({'name': "From", 'value': from, 'inline': true});
                     fields.push({'name': "Date", 'value': date, 'inline': true});
                     announceEmbed(subject, body, fields, 16088613);
