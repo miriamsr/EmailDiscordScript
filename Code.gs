@@ -1,4 +1,4 @@
-const url: string = "YOUR_WEBHOOK_URL";
+const url = "YOUR_WEBHOOK_URL";
 
 function startTrigger() {
     ScriptApp.newTrigger('checkEmails').timeBased().everyMinutes(5).create();
@@ -6,7 +6,7 @@ function startTrigger() {
 }
 
 function checkEmails() {
-    const lastRun = +PropertiesService.getUserProperties().getProperty('lastRun')!;
+    const lastRun = PropertiesService.getUserProperties().getProperty('lastRun');
     const threads = GmailApp.getInboxThreads(0, 20);
     const teamEmail = Session.getActiveUser().getEmail();
     for (const thread of threads) {
@@ -28,7 +28,7 @@ function checkEmails() {
                         body = body.substring(0, 4050) + "\n\n**email has been truncated due to length**";
                     }
 
-                    const fields: object[] = [];
+                    const fields = [];
                     fields.push({'name': "From", 'value': from, 'inline': true});
                     fields.push({'name': "Date", 'value': date, 'inline': true});
                     announceEmbed(subject, body, fields, 16088613);
@@ -36,15 +36,15 @@ function checkEmails() {
             }
         }
     }
-    resetLastRun()
+    resetLastRun();
 }
 
 function resetLastRun() {
     PropertiesService.getUserProperties().setProperty('lastRun', ""+new Date().getTime());
 }
 
-function announceEmbed(title: string, description: string, fields: object, color: number) {
-    const data: object = {
+function announceEmbed(title, description, fields, color) {
+    const data = {
         "embeds": [{
         "title": title,
         "description": description,
@@ -52,7 +52,7 @@ function announceEmbed(title: string, description: string, fields: object, color
         "fields": fields
         }]
     };
-    const options: object = {
+    const options = {
         method: "post",
         payload: JSON.stringify(data),
         contentType: "application/json; charset=utf-8",

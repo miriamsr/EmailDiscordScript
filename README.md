@@ -7,32 +7,8 @@ Automatically posts emails in Discord for the entire team to access.
 **Important Note:** These instruction assume that you already have [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en) installed on your computer.
 
 1. Create a webhook in your team's Discord server. This can be done from the Integrations tab of channel settings.
-2. Enable the [Google Apps Script API](https://script.google.com/home/usersettings) for your team account.
-3. Open a terminal window in the directory you want to use for the setup. Nothing saved there will need to be accessed once these steps are complete.
-4. Clone this repository.
-```bash
-git clone https://github.com/miriamsr/EmailDiscordScript.git
-```
-5. Install clasp.
-```bash
-npm install -g @google/clasp
-```
-6. Login to clasp. It will open a browser window and prompt you to login. Grant the permissions.
-```bash
-clasp login
-```
-7. Create a new project.
-```bash
-clasp create --type standalone
-```
-8. Push the code in this repo to your new project.
-```bash
-clasp push
-```
-9. Open your project in the browser.
-```bash
-clasp open
-```
+2. Using your team's google account, create a new [Google Apps Script](https://script.google.com/home).
+3. Replace everything in Code.gs there with the contents of Code.gs here.
 10. On line 2 replace `YOUR_WEBHOOK_URL` with the URL of the webhook you created earlier and save.
 11. Run the `startTrigger` function and authorize it. If it gives you a prompt about verification, click advanced and proceed.
 
